@@ -407,7 +407,7 @@ form.sign-in-form {
   text-align: center;
   padding: 60px 0px;
   margin: 0;
-  height: 130%;
+  height: 100%;
   background-image: url(img/mall.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -417,7 +417,7 @@ form.sign-in-form {
 .logo-description
 {  
   width: 60%;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 .logo , .description
 {
