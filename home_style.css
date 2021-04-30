@@ -53,5 +53,9 @@ li{
     padding: 20px;
     margin: 20px 5%;
 }
+#type{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
 
    
