@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SELLING FORM</title>
-    <link rel="stylesheet" href="css/form_styles.css">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="css/in_all.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SELLING FORM</title>
+  <link rel="stylesheet" href="css/form_styles.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="css/in_all.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
+
 <body>
   <div class="header" id="head">
     <h2>WINKELEN</h2>
     <span id="greeting">welcome!</span>
     <a href="profile.html" id="UserLogo">
-        <span id="UserName">User Name</span>
-        <img src="img/user-solid.svg" alt="profile">
+      <span id="UserName">User Name</span>
+      <img src="img/user-solid.svg" alt="profile">
     </a>
-</div>
-<div class="navbar sticky-top" id="navbar">
+  </div>
+  <div class="navbar sticky-top" id="navbar">
     <ul>
-        <li><a href="home.html">HOME</a></li>
-        <li><a href="form.html">SELL</a></li>
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="form.html">SELL</a></li>
     </ul>
-</div>
-    <div class="testbox motion animate__animated animate__fadeIn">
-        <form action="/">
-          <div class="banner">
-            <h1>REGISTER AS A SELLER</h1>
-          </div>
-          <div class="item">
-            <p>Name</p>
-            <div class="name-item">
-              <input type="text" name="name" placeholder="First" />
-              <input type="text" name="name" placeholder="Last" />
-            </div>
-          </div>
-          <div class="item">
-            <p>Email</p>
-            <input type="email" name="email"/>
-           </div>
-          <div class="item">
-            <p>Phone</p>
-            <input type="text" name="phone" placeholder="+91"/>
-          </div>
-          <div class="item">
-            <p>Address</p>
-            <input type="text" name="name" placeholder="Street address" required/>
-            <input type="text" name="name" placeholder="Street address line 2" required/>
-            <div class="city-item">
-              <input type="text" name="name" placeholder="City" required/>
-              <input type="text" name="name" placeholder="Region" required/>
-              <input type="text" name="name" placeholder="Postal / Zip code" required/>
-
-            </div>
-          </div>
-          <div class="btn-block">
-            <button type="submit" href="/">Send Application</button>
-            <button type="button"><a href="home.html">Back to home</a></button>
-          </div>
-        </form>
+  </div>
+  <div class="testbox motion animate__animated animate__fadeIn">
+    <form action="/">
+      <div class="banner">
+        <h1>REGISTER AS A SELLER</h1>
       </div>
-    
+      <div class="item">
+        <p>Name</p>
+        <div class="name-item">
+          <input type="text" name="name" required id="sellerFirstName" placeholder="First" />
+          <input type="text" name="name" id="sellerLastName" placeholder="Last" />
+        </div>
+      </div>
+      <div class="item">
+        <p>Email</p>
+        <input type="email" id="sellerEmail" name="email" required />
+      </div>
+      <div class="item">
+        <p>Phone</p>
+        <input type="text" name="phone" required id="sellerMobileNumber" placeholder="+91" />
+      </div>
+      <div class="item">
+        <p>Categories</p>
+        <input type="checkbox" name="chkBox" value="Grocery"><p>Grocery</p> 
+        <input type="checkbox" name="chkBox" value="Stationary"><p>Stationary</p> 
+        <input type="checkbox" name="chkBox" value="Hardware"><p>Hardware</p> 
+        <input type="checkbox" name="chkBox" value="Garments"><p> Garments</p>
+        <input type="checkbox" name="chkBox" value="General"><p>General</p> 
+        <input type="checkbox" name="chkBox" value="Books"><p>Books</p> 
+        <input type="checkbox" name="chkBox" value="Others"><p>Others</p>
+      </div>
+      <div class="item">
+        <p>Address</p>
+        <input type="text" name="name" id="sellerAddressLine1" placeholder="Street address" required />
+        <input type="text" name="name" id="sellerAddressLine2" placeholder="Street address line 2" required />
+        <div class="city-item">
+          <input type="text" name="name" id="sellerAddressCity" placeholder="City" required />
+          <input type="text" name="name" id="sellerAddressRegion" placeholder="Region" required />
+          <input type="text" name="name" id="sellerAddressZipCode" placeholder="Postal / Zip code" required />
+
+        </div>
+      </div>
+      <div class="btn-block">
+        <button id="sellerAppFormSubmitBtn">Send Application</button>
+        <button type="button"><a href="home.html">Back to home</a></button>
+      </div>
+    </form>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+  <script>
+
+    $("#sellerAppFormSubmitBtn").click(function () {
+      var sellerCategories = [];
+      $("input:checkbox[name=chkBox]:checked").each(function () {
+        sellerCategories.push($(this).val());
+      });
+      var sellerDetails = {
+        userName: $("#sellerFirstName").val() + " " + $("#sellerLastName").val(),
+        categories: sellerCategories,
+        email: $("#sellerEmail").val(),
+        address: $("#sellerAddressLine1").val() + "," + $("#sellerAddressLine2").val() + "," + $("#sellerAddressCity").val() + "," + $("#sellerAddressRegion").val() + "," + $("#sellerAddressZipCode").val(),
+        city: $("#sellerAddressCity").val(),
+      }
+      console.log(sellerDetails);
+    })
+  </script>
 </body>
+
 </html>
