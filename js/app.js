@@ -9,21 +9,22 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
   container.classList.remove("sign-up-mode");
 });
+
+//sign in funciton using email
 $("#signInBtn").click(function () {
-  email = $("#signInUserEmail").val()
-  password = $("#signInUserPassword").val()
+  email = $("#signInUserEmail").val();
+  password = $("#signInUserPassword").val();
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      alert("sign in successfull")
-      console.log(user);    // ...
+      alert("sign in successfull");
+      console.log(user);
+      location.assign(window.location.pathname+"/../home.html")
     })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
 })
+
+//sign up function starts
 $("#signUpBtn").click(function () {
   email = $("#signUpUserEmail").val()
   password = $("#signUpUserPassword").val()
@@ -35,10 +36,8 @@ $("#signUpBtn").click(function () {
       return db.collection('users').doc(cred.user.uid).set({
         name: $("#signUpUserName").val(),
       }).catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          alert(errorMessage);
-          // ..
-        });
+        var errorMessage = error.message;
+        alert(errorMessage);
+      });
     })
 })
