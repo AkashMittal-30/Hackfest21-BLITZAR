@@ -9,3 +9,4 @@ Team members:
 5. SHUBHAM SINGH
 
 Online shopping platform for local shops based on user location.
+rgba(74, 248, 248)

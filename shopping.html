@@ -9,15 +9,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="shopping_style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="in_all.css">
 </head>
 <body>
-    <div class="info">
+    <div class="header" id="head">
+       
+        <h2>WINKELEN</h2>
+        <p id="greeting">welcome!!</p>
+       
+    </div>
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li>SELL WITH US</li>
+        </ul>
+    </div>
+    <div class="motion animate__animated animate__slideInRight">
+      <div class="info">
         <img id="shop_img" src="img/img.jpg" alt="">
         <h3 id="name">SHOP NAME</h3>
         <p id="description">description</p>
-    </div>
-    <hr>
-    <div class="main_container">
+      </div>
+      <hr>
+      <div class="main_container">
         <div class="card" style="width: 18rem;">
             <img src="img/img.jpg" class="card-img-top" id="shop_img">
             <div class="card-body">
@@ -26,7 +42,8 @@
               <hr>
               <a href="shopping.html" class="btn btn-primary">BUY</a>
             </div>
-          </div>
+        </div>
+    </div>
 
 </body>
 </html>
