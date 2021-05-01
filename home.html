@@ -48,7 +48,7 @@
                 <option value="5">Others</option>
             </select>
         </div>
-        <div class="main_container">
+        <div class="main_container" id="idBox" style="display: flexbox; flex-direction: row;">
             <div class="card" style="width: 18rem;">
                 <img src="img/img.jpg" class="card-img-top" id="shop_img">
                 <div class="card-body">
@@ -85,45 +85,55 @@
             //update firestore settings
             db.settings({ timeStampsInSnapshots: true });
             var temposeller = "test";
-            // console.log(temposeller);
-            var finder = "jaipur";
-            // var finder = $("#signInUserCity").val();
-            console.log(finder);
-            var docRef = db.collection("city").doc(finder);
+            var str1 = "";
+            $("#idBox").html("");
+            var finder = document.getElementById("signInUserCity");
+            var docRef = db.collection("city").doc("jaipur");
             docRef.get().then((doc) => {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
-                    console.log(temposeller);
+                    const idmap = doc.data().sellerIdArray;
+                    for (var key in idmap) {
+                        console.log(idmap[key]);
+                        var docRef2 = db.collection("seller").doc(idmap[key]);
+                        docRef2.get().then((doc) => {
+                            if (doc.exists) {
+                                
+                                console.log("Document data:", doc.data());
+                                str1 += `  
+                              <div class="card" style="width: 18rem; height:100%; display:inline-block">
+                                <img src="img/img.jpg" class="card-img-top" id="shop_img">
+                                <div class="card-body">
+                                    <h4 class="card-title" id="name">${doc.data().userName}</h5>
+                                    <span class="type" id="type">${doc.data().categories}</span>
+                                    <hr>
+                                    <p class="card-text" id="description">${doc.data().address}</p>
+                                    <a href="shopping.html" class="btn btn-primary">SHOP</a>
+                                </div>
+                               </div> `;
+                               $("#idBox").append(str1);
+                                console.log("ye chl gya")
+                            }
+                            else {
+                                console.log("this one is not working", idmap[key]);
+                                console.log("ye nhi chl rha h")
+                            }
+                        })
+                    }
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
                 }
             }).catch((error) => {
                 console.log("Error getting document:", error);
-            }).then(() => {
-                var docRef = db.collection("city").doc(finder);
-                docRef.get().then((doc) => {
-                    if (doc.exists) {
-                        console.log("Document data:", doc.data());
-                        // document.getElementById("name").innerHTML = "city is " + doc.data().city;
-                        const idmap = doc.data().sellerIdArray;
-                        for (var key in idmap) {
-                            console.log(idmap[key]);
-                        }
-                    } else {
-                        // doc.data() will be undefined in this case
-                        console.log("No such document!");
-                    }
-                }).catch((error) => {
-                    console.log("Error getting document:", error);
-                });
+            }).catch((error) => {
+                console.log(error.Message);
             });
-            console.log("flag");
+
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
-        <script src="home_main.js"></script>
 </body>
 
 </html>
