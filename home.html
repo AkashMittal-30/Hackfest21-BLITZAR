@@ -85,7 +85,7 @@
             //update firestore settings
             db.settings({ timeStampsInSnapshots: true });
             var temposeller = "test";
-            var str1 = "";
+            
             $("#idBox").html("");
             var finder = document.getElementById("signInUserCity");
             var docRef = db.collection("city").doc("jaipur");
@@ -98,7 +98,7 @@
                         var docRef2 = db.collection("seller").doc(idmap[key]);
                         docRef2.get().then((doc) => {
                             if (doc.exists) {
-                                
+                                var str1 = "";
                                 console.log("Document data:", doc.data());
                                 str1 += `  
                               <div class="card" style="width: 18rem; height:100%; display:inline-block">
@@ -130,6 +130,14 @@
                 console.log(error.Message);
             });
 
+            firebase.auth().onAuthStateChanged(user => {
+                console.log(user);
+                if(user){
+                    console.log("user is here");
+                } else{
+                    console.log("user not present");
+                }
+            })
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
