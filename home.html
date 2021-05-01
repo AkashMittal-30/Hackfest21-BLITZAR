@@ -19,27 +19,26 @@
 <body>
     <div class="header" id="head">
         <h2>WINKELEN</h2>
-        <p id="greeting">welcome!!</p>
+        <span id="greeting">welcome!</span>
         <a href="profile.html" id="UserLogo">
             <span id="UserName">User Name</span>
             <img src="img/user-solid.svg" alt="profile">
         </a>
     </div>
-    <div class="navbar" id="navbar">
+    <div class="navbar sticky-top" id="navbar">
         <ul>
             <li><a href="home.html">HOME</a></li>
-            <li><a href="form.html"> SELL WITH US</a></li>
+            <li><a href="form.html">SELL</a></li>
         </ul>
     </div>
-    <div class="motion animate__animated animate__slideInLeft">
+    <div class="motion animate__animated animate__fadeIn">
         <div class="slider">
-
             <div class="top_sold"></div>
             <div class="special"></div>
         </div>
         <hr>
         <div class="filters">
-            <select name="filters" id="types" onchange="filters()">
+            <select name="filters" class="btn btn-info dropdown-toggle" id="types" onchange="filters()">
                 <option value="1">Grocery</option>
                 <option value="2">Stationary</option>
                 <option value="3">Hardware</option>
@@ -63,6 +62,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
