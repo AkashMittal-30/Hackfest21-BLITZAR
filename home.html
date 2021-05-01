@@ -28,7 +28,7 @@
     <div class="navbar" id="navbar">
         <ul>
             <li><a href="home.html">HOME</a></li>
-            <li>SELL WITH US</li>
+            <li><a href="form.html"> SELL WITH US</a></li>
         </ul>
     </div>
 <div class="motion animate__animated animate__slideInLeft">
@@ -37,6 +37,18 @@
         <div class="top_sold"></div>
         <div class="special"></div>
     </div>
+    <hr>
+    <div class="filters">
+    <select name="filters" id="types" onchange="filters()">
+        <option value="1">Grocery</option>
+        <option value="2">Stationary</option>
+        <option value="3">Hardware</option>
+        <option value="4">Garments</option>
+        <option value="3">General</option>
+        <option value="4">Books</option>
+        <option value="5">Others</option>
+    </select>
+</div>
     <div class="main_container">
         <div class="card" style="width: 18rem;">
             <img src="img/img.jpg" class="card-img-top" id="shop_img">
