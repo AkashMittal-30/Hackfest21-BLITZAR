@@ -81,8 +81,8 @@ html, body {
     margin: 10px 0;
     }
     button {
-    margin: 2px 50%; 
-    transform: translate(-50%,0%);   
+    margin: 5px 5px;
+    position: relative;
     width: 150px;
     padding: 10px;
     border: none;
@@ -112,3 +112,27 @@ html, body {
         color: white;
         text-decoration: none;
     }
+.btn-block{
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: white;
+}
+.back{
+    border: 1px solid black;
+    background-color: darkcyan;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+
+}
