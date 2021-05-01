@@ -24,6 +24,18 @@
     padding: 20px;
     margin: 20px 5%;
 }
+.filters{
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    padding: 5px;
+    margin: 5px auto;
+    border-radius: 5px;
+}
+
 #type{
     font-style: italic;
     font-family:italic ;

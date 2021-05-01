@@ -1,0 +1,114 @@
+html, body {
+    min-height: 100%;
+    }
+    body, div, form, input, select, textarea, p { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 22px;
+    }
+    h1 {
+    position: absolute;
+    margin: 0;
+    font-size: 38px;
+    color: #fff;
+    z-index: 2;
+    }
+    .testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 20px;
+    position: relative;
+    top: 0px;
+    animation: box_animation 1s linear;
+    }
+    @keyframes box_animation{
+        0%{top:-400px };
+        100%{top: 0px};
+    }
+    form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    }
+    .banner {
+    position: relative;
+    height: 210px;
+   background-color: darkcyan;  
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+    input, select, textarea {
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    }
+    input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    }
+    input[type="date"] {
+    padding: 4px 5px;
+    }
+    select {
+    width: 100%;
+    padding: 7px 0;
+    background: transparent;
+    }
+    textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+    }
+    .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+    color: #60a0e9;
+    }
+    .item input:hover, .item select:hover, .item textarea:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 6px 0 #60a0e9;
+    color: #60a0e9;
+    }
+    .item {
+    position: relative;
+    margin: 10px 0;
+    }
+    button {
+    margin: 2px 50%; 
+    transform: translate(-50%,0%);   
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px; 
+    background: darkcyan;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    }
+    button:hover {
+    background: darkslategray;
+    }
+    @media (min-width: 568px) {
+    .name-item, .city-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .name-item input, .city-item input {
+    width: calc(50% - 20px);
+    }
+    .city-item select {
+    width: calc(50% - 8px);
+    }
+    }
+    a{
+        color: white;
+        text-decoration: none;
+    }
