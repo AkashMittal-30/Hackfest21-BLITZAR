@@ -58,15 +58,20 @@ body
     padding: 5px;
     box-sizing: border-box;
 }
-.navbar li a
+.navbar li a,.navbar li button
 {
     text-decoration: none;
     color: white;
 }
-.navbar li a:hover
+.navbar li a:hover,.navbar li button:hover
 {
     text-decoration: none;
     color: rgba(74, 248, 248);
+}
+.navbar li button
+{
+    background: transparent;
+    border: none;
 }
 .navbar li:hover
 {
