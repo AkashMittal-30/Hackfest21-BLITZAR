@@ -20,6 +20,7 @@ $("#signInBtn").click(function () {
       var user = userCredential.user;
       alert("sign in successfull");
       console.log(user);
+      var finder = document.getElementById("signInUserCity");
       location.assign(window.location.pathname+"/../home.html")
     })
 })
@@ -33,6 +34,7 @@ $("#signUpBtn").click(function () {
       // Signed in 
       var user = cred.user;
       console.log("User created Successfully")
+      
       return db.collection('users').doc(cred.user.uid).set({
         name: $("#signUpUserName").val(),
       }).catch((error) => {

@@ -27,16 +27,18 @@
     </div>
     <div class="navbar sticky-top" id="navbar">
         <ul>
-            <li><a href="home.html">HOME</a></li>
-            <li><button id="sellerRegisterBtn">SELL</button></li>
+            <li><a class="btn btn-dark" href="home.html">HOME</a></li>
+            <li><button id="sellerRegisterBtn" class="btn btn-dark">SELL</button></li>
+            <li><input type="text" name="userCity" id="userHomeCity" placeholder="Your City" autofocus></li>
+            <li><button id="sellerSearchBtn" class="btn btn-dark">Search sellers</button></li>
         </ul>
     </div>
     <div class="motion animate__animated animate__fadeIn">
-        <div class="slider">
+        <!-- <div class="slider">
             <div class="top_sold"></div>
             <div class="special"></div>
-        </div>
-        <hr>
+        </div> -->
+        <!-- <hr> -->
         <div class="filters">
             <select name="filters" class="btn btn-info dropdown-toggle" id="types" onchange="filters()">
                 <option value="1">Grocery</option>
@@ -49,7 +51,8 @@
             </select>
         </div>
         <div class="main_container" id="idBox" style="display: flexbox; flex-direction: row;">
-            <div class="card" style="width: 18rem;">
+            <h3>Enter your city and click on search button</h3>
+            <!-- <div class="card" style="width: 18rem;">
                 <img src="img/img.jpg" class="card-img-top" id="shop_img">
                 <div class="card-body">
                     <h4 class="card-title" id="name">Card title</h5>
@@ -60,35 +63,36 @@
                             the bulk of the card's content.</p>
                         <a href="shopping.html" class="btn btn-primary">SHOP</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
-        <script>
-            var firebaseConfig = {
-                apiKey: "AIzaSyB4Oj_G8sYzdro-WPZ_tT7pMkWolZfesIo",
-                authDomain: "winkelen-f879b.firebaseapp.com",
-                projectId: "winkelen-f879b",
-                storageBucket: "winkelen-f879b.appspot.com",
-                messagingSenderId: "1044503885047",
-                appId: "1:1044503885047:web:dc97c2b921a3ba4058cff2",
-                measurementId: "G-65QJF9N62R"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            //make auth and firestore references
-            const auth = firebase.auth();
-            const db = firebase.firestore();
-            //update firestore settings
-            db.settings({ timeStampsInSnapshots: true });
-            var temposeller = "test";
-            
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB4Oj_G8sYzdro-WPZ_tT7pMkWolZfesIo",
+            authDomain: "winkelen-f879b.firebaseapp.com",
+            projectId: "winkelen-f879b",
+            storageBucket: "winkelen-f879b.appspot.com",
+            messagingSenderId: "1044503885047",
+            appId: "1:1044503885047:web:dc97c2b921a3ba4058cff2",
+            measurementId: "G-65QJF9N62R"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        //update firestore settings
+        db.settings({ timeStampsInSnapshots: true });
+        var temposeller = "test";
+        $("#sellerSearchBtn").click(function () {
             $("#idBox").html("");
-            var finder = document.getElementById("signInUserCity");
-            var docRef = db.collection("city").doc("jaipur");
+            var finder = $("#userHomeCity").val()
+            console.log(finder);
+            var docRef = db.collection("city").doc(finder);
             docRef.get().then((doc) => {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
@@ -111,7 +115,7 @@
                                     <a href="shopping.html" class="btn btn-primary">SHOP</a>
                                 </div>
                                </div> `;
-                               $("#idBox").append(str1);
+                                $("#idBox").append(str1);
                                 console.log("ye chl gya")
                             }
                             else {
@@ -132,21 +136,21 @@
 
             firebase.auth().onAuthStateChanged(user => {
                 console.log(user);
-                if(user){
+                if (user) {
                     console.log("user is here");
-                } else{
+                } else {
                     console.log("user not present");
                 }
             })
-
-            //when seller tries to register
-            $("#sellerRegisterBtn").click(function(){
-                location.assign(window.location.pathname+"/../form.html")
-            })
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-            crossorigin="anonymous"></script>
+        })
+        //when seller tries to register
+        $("#sellerRegisterBtn").click(function () {
+            location.assign(window.location.pathname + "/../form.html")
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -32,40 +32,48 @@
     </ul>
   </div>
   <div class="testbox motion animate__animated animate__fadeIn">
-    <form action="/">
+    <form>
       <div class="banner">
         <h1>REGISTER AS A SELLER</h1>
       </div>
       <div class="item">
         <p>Name</p>
         <div class="name-item">
-          <input type="text" name="name" required id="sellerFirstName" placeholder="First" />
+          <input type="text" name="name" required id="sellerFirstName" placeholder="First*" />
           <input type="text" name="name" id="sellerLastName" placeholder="Last" />
         </div>
       </div>
       <div class="item">
-        <p>Email</p>
+        <p>Email*</p>
         <input type="email" id="sellerEmail" name="email" required />
       </div>
       <div class="item">
-        <p>Phone</p>
+        <p>Phone*</p>
         <input type="text" name="phone" required id="sellerMobileNumber" placeholder="+91" />
       </div>
       <div class="item">
         <p>Categories</p>
-        <input type="checkbox" name="chkBox" value="Grocery"><p>Grocery</p> 
-        <input type="checkbox" name="chkBox" value="Stationary"><p>Stationary</p> 
-        <input type="checkbox" name="chkBox" value="Hardware"><p>Hardware</p> 
-        <input type="checkbox" name="chkBox" value="Garments"><p> Garments</p>
-        <input type="checkbox" name="chkBox" value="General"><p>General</p> 
-        <input type="checkbox" name="chkBox" value="Books"><p>Books</p> 
-        <input type="checkbox" name="chkBox" value="Others"><p>Others</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Grocery">
+        <p class="checkbox">Grocery</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Stationary">
+        <p class="checkbox">Stationary</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Hardware">
+        <p class="checkbox">Hardware</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Garments">
+        <p class="checkbox"> Garments</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="General">
+        <p class="checkbox">General</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Books">
+        <p class="checkbox">Books</p>
+        <input type="checkbox" class="checkbox" name="chkBox" value="Others">
+        <p class="checkbox">Others</p>
       </div>
       <div class="item">
-        <p>Address</p>
-        <input type="text" name="name" id="sellerAddressLine1" placeholder="Street address" required />
-        <input type="text" name="name" id="sellerAddressLine2" placeholder="Street address line 2" required />
+        <p>Address*</p>
+
         <div class="city-item">
+          <input type="text" name="name" id="sellerAddressLine1" placeholder="Street address" required />
+          <input type="text" name="name" id="sellerAddressLine2" placeholder="Street address line 2" required />
           <input type="text" name="name" id="sellerAddressCity" placeholder="City" required />
           <input type="text" name="name" id="sellerAddressRegion" placeholder="Region" required />
           <input type="text" name="name" id="sellerAddressZipCode" placeholder="Postal / Zip code" required />
@@ -73,18 +81,35 @@
         </div>
       </div>
       <div class="btn-block">
-        <button id="sellerAppFormSubmitBtn">Send Application</button>
+        <button type="submit" id="sellerAppFormSubmitBtn">Send Application</button>
         <button type="button"><a href="home.html">Back to home</a></button>
       </div>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
   <script>
 
+
     $("#sellerAppFormSubmitBtn").click(function () {
+      var firebaseConfig = {
+        apiKey: "AIzaSyB4Oj_G8sYzdro-WPZ_tT7pMkWolZfesIo",
+        authDomain: "winkelen-f879b.firebaseapp.com",
+        projectId: "winkelen-f879b",
+        storageBucket: "winkelen-f879b.appspot.com",
+        messagingSenderId: "1044503885047",
+        appId: "1:1044503885047:web:dc97c2b921a3ba4058cff2",
+        measurementId: "G-65QJF9N62R"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      //make auth and firestore references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      //update firestore settings
+      db.settings({ timeStampsInSnapshots: true });
       var sellerCategories = [];
       $("input:checkbox[name=chkBox]:checked").each(function () {
         sellerCategories.push($(this).val());
@@ -97,7 +122,26 @@
         city: $("#sellerAddressCity").val(),
       }
       console.log(sellerDetails);
+      firebase.firestore().collection("seller").add(sellerDetails)
+        .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+          var docSellerId = docRef.id;
+          db.collection("city").doc($("#sellerAddressCity").val()).set({ foo: 'bar' }, { merge: true })
+          db.collection("city").doc($("#sellerAddressCity").val()).update({
+            sellerIdArray: firebase.firestore.FieldValue.arrayUnion(docSellerId)
+          })
+        })
+        .catch((error) => {
+          alert(error.Message);
+        })
+      console.log($("#sellerAddressCity").val())
+      console.log("success");
+      alert("seller registered successfully");
+
+
+
     })
+
   </script>
 </body>
 
