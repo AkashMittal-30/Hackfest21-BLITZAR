@@ -12,7 +12,7 @@ sign_in_btn.addEventListener("click", () => {
 
 //sign in funciton using email
 $("#signInBtn").click(function () {
-  email = $("#signInUserEmail").val();
+  email = $("#signInUserEmail").val().toLowerCase();
   password = $("#signInUserPassword").val();
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -20,20 +20,19 @@ $("#signInBtn").click(function () {
       var user = userCredential.user;
       alert("sign in successfull");
       console.log(user);
-      var finder = document.getElementById("signInUserCity");
       location.assign(window.location.pathname+"/../home.html")
     })
 })
 
 //sign up function starts
 $("#signUpBtn").click(function () {
-  email = $("#signUpUserEmail").val()
+  email = $("#signUpUserEmail").val().toLowerCase()
   password = $("#signUpUserPassword").val()
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((cred) => {
       // Signed in 
       var user = cred.user;
-      console.log("User created Successfully")
+      alert("User created Successfully.Now sign in with the id");
       
       return db.collection('users').doc(cred.user.uid).set({
         name: $("#signUpUserName").val(),

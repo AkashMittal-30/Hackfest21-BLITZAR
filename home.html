@@ -28,7 +28,7 @@
     <div class="navbar sticky-top" id="navbar">
         <ul>
             <li><a class="btn btn-dark" href="home.html">HOME</a></li>
-            <li><button id="sellerRegisterBtn" class="btn btn-dark">SELL</button></li>
+            <li><button id="sellerRegisterBtn" class="btn btn-dark">Become a Seller</button></li>
             <li><input type="text" name="userCity" id="userHomeCity" placeholder="Your City" autofocus></li>
             <li><button id="sellerSearchBtn" class="btn btn-dark">Search sellers</button></li>
         </ul>
@@ -39,7 +39,7 @@
             <div class="special"></div>
         </div> -->
         <!-- <hr> -->
-        <div class="filters">
+        <!-- <div class="filters">
             <select name="filters" class="btn btn-info dropdown-toggle" id="types" onchange="filters()">
                 <option value="1">Grocery</option>
                 <option value="2">Stationary</option>
@@ -49,7 +49,7 @@
                 <option value="4">Books</option>
                 <option value="5">Others</option>
             </select>
-        </div>
+        </div> -->
         <div class="main_container" id="idBox" style="display: flexbox; flex-direction: row;">
             <h3>Enter your city and click on search button</h3>
             <!-- <div class="card" style="width: 18rem;">
@@ -90,7 +90,7 @@
         var temposeller = "test";
         $("#sellerSearchBtn").click(function () {
             $("#idBox").html("");
-            var finder = $("#userHomeCity").val()
+            var finder = $("#userHomeCity").val().toLowerCase()
             console.log(finder);
             var docRef = db.collection("city").doc(finder);
             docRef.get().then((doc) => {
@@ -116,11 +116,10 @@
                                 </div>
                                </div> `;
                                 $("#idBox").append(str1);
-                                console.log("ye chl gya")
+                               
                             }
                             else {
                                 console.log("this one is not working", idmap[key]);
-                                console.log("ye nhi chl rha h")
                             }
                         })
                     }
