@@ -126,6 +126,7 @@
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
+                    document.getElementById("idBox").innerHTML="No registered seller in this area.";
                 }
             }).catch((error) => {
                 console.log("Error getting document:", error);
@@ -137,6 +138,12 @@
                 console.log(user);
                 if (user) {
                     console.log("user is here");
+                    email = user.email;
+        var name = user.displayNmae;
+        if (name != null)
+            document.getElementById("greeting").innerHTML = `welcome  ${name}`;
+        else
+            document.getElementById("greeting").innerHTML = `welcome  ${email}!!`;
                 } else {
                     console.log("user not present");
                 }
